@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Meeting Reminder</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="add_meeting">Add Meeting</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open">Open navigation drawer</string>
+    <string name="close">Close navigation drawer</string>
+    <string name="nav_header_title">MeetMinder</string>
+    <string name="nav_header_subtitle">apps@askfoodscientists.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+<!--    <string name="real_ad">ca-app-pub-4576310486175549/8193547415</string>-->
+<!--    <string name="real_ad_real">ca-app-pub-4576310486175549/8193547415</string>-->
+<!--    <string name="test_ad">ca-app-pub-3940256099942544/9214589741</string>-->
+
+
+
+        <string name="real_ad">ca-app-pub-3940256099942544/6300978111</string>
+        <string name="real_ad_real">ca-app-pub-3940256099942544/6300978111</string>
+        <string name="test_ad">ca-app-pub-3940256099942544/6300978111</string>
+
+    <!-- ... other strings ... -->
+    <string name="notification_channel_name_meeting_reminders">Meeting Reminders</string>
+    <string name="notification_channel_description_meeting_reminders">Notifications for scheduled meeting reminders</string>
+
+
+    <string-array name="recurrence_options">
+        <item>Once</item>
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+    </string-array>
+
+    <string-array name="active_options">
+        <item>Active</item>
+        <item>Not Active</item>
+    </string-array>
+
+</resources>

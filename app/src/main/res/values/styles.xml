@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomSearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColorHint">@android:color/darker_gray</item> <!-- Hint text color -->
+    </style>
+
+
+    <!-- Custom style for the TabLayout -->
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/TabTextAppearance</item>
+        <item name="tabSelectedTextColor">@android:color/white</item>
+        <item name="tabIndicatorColor">@android:color/white</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- Style for Tab Text Appearance -->
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <!-- Style for Selected Tab Text Appearance -->
+    <style name="TabTextSelectedAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item> <!-- Bigger size for active tab -->
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>

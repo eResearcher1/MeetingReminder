@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <item
+            android:id="@+id/switchOffAds"
+            android:icon="@drawable/ic_ads_off"
+            android:iconTint="@color/black"
+            android:title="Switch Off ADs"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/settingsButton"
+            android:icon="@drawable/ic_settings"
+            android:iconTint="@color/black"
+            android:title="Settings" />
+
+        <item
+            android:id="@+id/managerButton"
+            android:icon="@android:drawable/ic_menu_agenda"
+            android:iconTint="@color/black"
+            android:title="Manage All Meetings" />
+
+<!--        <item-->
+<!--            android:id="@+id/alarmButton"-->
+<!--            android:icon="@android:drawable/ic_lock_idle_alarm"-->
+<!--            android:iconTint="@color/black"-->
+<!--            android:title="All Alarms" />-->
+
+    </group>
+
+
+    <group
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <item
+            android:id="@+id/pendingMeetingsButton"
+            android:icon="@drawable/ic_pending_meetings"
+            android:iconTint="@color/black"
+            android:title="Pending Meetings" />
+        <item
+            android:id="@+id/ongoingMeetingsButton"
+            android:icon="@drawable/ic_fragment2"
+            android:iconTint="@color/black"
+            android:title="Ongoing Meetings" />
+        <item
+            android:id="@+id/pastMeetingsButton"
+            android:icon="@drawable/ic_fragment1"
+            android:iconTint="@color/black"
+            android:title="Past Meetings" />
+        <item
+            android:id="@+id/calendarButton"
+            android:icon="@drawable/ic_calendar"
+            android:iconTint="@color/black"
+            android:title="Calendar" />
+    </group>
+    <group
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+
+        <item
+            android:id="@+id/helpButton"
+            android:icon="@drawable/ic_help"
+            android:iconTint="@color/black"
+            android:title="Help" />
+        <item
+            android:id="@+id/otherAppsButton"
+            android:icon="@drawable/ic_other_apps"
+            android:iconTint="@color/black"
+            android:title="Other Applications" />
+
+        <item
+            android:id="@+id/rateButton"
+            android:icon="@android:drawable/btn_star_big_on"
+            android:iconTint="@color/black"
+            android:title="Rate This App" />
+        <item
+            android:id="@+id/privacyButton"
+            android:icon="@drawable/ic_privacy"
+            android:iconTint="@color/black"
+            android:title="Privacy Policy" />
+
+    </group>
+
+
+</menu>

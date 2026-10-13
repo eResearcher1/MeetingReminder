@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="inactiveColor">#808080</color> <!-- Example: Grey -->
+    <color name="errorColor">#FF0000</color>    <!-- Example: Red -->
+
+    <!-- Define color values -->
+    <color name="colorPrimary">#016f0c</color> <!-- Primary color -->
+
+    <color name="colorPrimary1">#A1E4A8</color> <!-- Primary color -->
+    <color name="colorPrimaryDark">#FF01695A</color> <!-- Dark primary color -->
+    <color name="colorAccent">#FF4CAF50</color> <!-- Accent color (optional) -->
+
+    <color name="pendingColor">#FFA500</color> <!-- Orange for Pending -->
+    <color name="ongoingColor">#008000</color> <!-- Green for Ongoing -->
+    <color name="passedColor">#FF0000</color> <!-- Red for Passed -->
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:focusable="true"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:elevation="4dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:id="@+id/textMeetingId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Meeting ID: 1"/>
+        <TextView
+            android:textSize="14sp"
+            android:id="@+id/textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title: Meeting"/>
+        <TextView
+            android:textSize="14sp"
+            android:id="@+id/textDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description: Discuss project"/>
+        <TextView
+            android:textSize="14sp"
+            android:id="@+id/textReminderType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reminder Type: On Time"/>
+        <TextView
+            android:textSize="14sp"
+            android:id="@+id/textMeetingTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Meeting Time: 2025-08-14 10:00"/>
+        <TextView
+            android:textSize="14sp"
+            android:id="@+id/textReminderTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reminder Time: 2025-08-14 09:50"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

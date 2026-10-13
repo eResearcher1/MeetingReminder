@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="recurrence_options_with_yearly">
+        <item>Once</item>
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+    </string-array>
+
+
+<!--    <string-array name="active_options">-->
+<!--        <item>Active</item>-->
+<!--        <item>Inactive</item>-->
+<!--    </string-array>-->
+
+<!--    <string-array name="recurrence_options">-->
+<!--        <item>Once</item>-->
+<!--        <item>Daily</item>-->
+<!--        <item>Weekly</item>-->
+<!--        <item>Monthly</item>-->
+<!--    </string-array>-->
+
+</resources>

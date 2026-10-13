@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <permission android:name="com.xtraword.apps.meetminder.PERMISSION_RECEIVE_ALARM" android:protectionLevel="signature" />
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MeetMinder"
+        tools:targetApi="31">
+        <activity android:name=".manager.MeetingListActivity"
+            android:theme="@style/Base.Theme.MeetMinder"
+            android:exported="false" />
+        <activity android:name=".firstrunfragment.PermissionActivity"
+            android:theme="@style/Base.Theme.MeetMinder"
+            android:exported="false" />
+        <activity android:name=".firstrun.PermissionSlideshowActivity"
+            android:theme="@style/Base.Theme.MeetMinder"
+            android:exported="false" />
+        <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4576310486175549~9796043748" />
+        <activity android:name=".legal.PrivacyActivity"
+            android:theme="@style/Base.Theme.MeetMinder"
+            android:exported="false" />
+        <activity android:name=".alarms.SetAlarmsActivity"
+            android:theme="@style/Base.Theme.MeetMinder"
+            android:exported="false" />
+        <activity android:name=".legal.OtherAppsActivity"
+            android:theme="@style/Base.Theme.MeetMinder"
+            android:exported="false" />
+        <activity android:name=".legal.HelpActivity"
+            android:theme="@style/Base.Theme.MeetMinder"
+            android:exported="false" />
+        <activity android:name=".legal.SettingsActivity"
+            android:theme="@style/Base.Theme.MeetMinder"
+            android:exported="false" />
+        <activity android:name=".search.SearchActivity"
+            android:theme="@style/Base.Theme.MeetMinder"
+            android:exported="false" />
+        <activity android:name=".EditMeetingActivity"
+            android:theme="@style/Base.Theme.MeetMinder"
+            android:exported="false" />
+
+        <activity android:name=".AddMeetingActivity"
+            android:theme="@style/Base.Theme.MeetMinder"
+            android:exported="false" />
+
+        <service android:name=".alarms.AlarmServicesMM"
+            android:foregroundServiceType="dataSync" />
+
+        <receiver android:name=".alarms.BootReceiverMM"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".alarms.AlarmReceiverMM"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.xtraword.apps.meetminder.PERMISSION_RECEIVE_ALARM">
+            <intent-filter>
+                <action
+                    android:name="com.xtraword.apps.meetminder.ACTION_ALARM" />
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Base.Theme.MeetMinder">
+            </activity>
+        <service
+            android:name=".foreground.ReminderService"
+            android:exported="false" />
+        <activity
+            android:name=".AlarmActivity"
+            android:theme="@style/Base.Theme.MeetMinder"
+            android:exported="false" />
+        <receiver
+            android:name=".alarms.DailySummaryReceiver"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Base.Theme.MeetMinder">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

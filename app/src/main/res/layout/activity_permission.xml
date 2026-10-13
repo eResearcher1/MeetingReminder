@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayout3"
+    android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView
+        android:background="@drawable/background_startactivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="Apps Required Permissions"/>
+            <TextView
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="Notifications Permission"/>
+            <TextView
+                android:textSize="16sp"
+                android:id="@+id/txtNotificationPermissionDesc"
+                android:paddingBottom="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notification Permission is needed to allow the app to send notifications. Enable this permission to ensure you receive important alerts from the app."/>
+            <CheckBox
+                android:id="@+id/chkNotificationPermission"
+                android:clickable="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notification Permission"/>
+            <Button
+                android:id="@+id/btnRequestNotificationPermission"
+                android:background="@drawable/background1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Request Notification Permission"/>
+            <TextView
+                android:textStyle="italic"
+                android:textColor="@android:color/holo_red_dark"
+                android:gravity="center"
+                android:id="@+id/txtPermissionGuidance"
+                android:padding="16dp"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Permission guidance will appear here if needed."/>
+            <TextView
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp"
+                android:text="Ability to Set Alarm Permission"/>
+            <TextView
+                android:textSize="16sp"
+                android:id="@+id/txtExactAlarmPermissionDesc"
+                android:paddingBottom="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exact Alarm Permission is required to schedule alarms with precise timings. This ensures that critical events are triggered exactly when needed."/>
+            <CheckBox
+                android:id="@+id/chkExactAlarmPermission"
+                android:clickable="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exact Alarm Permission"/>
+            <Button
+                android:id="@+id/btnRequestExactAlarmPermission"
+                android:background="@drawable/background1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Request Exact Alarm Permission"/>
+            <TextView
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp"
+                android:text="Disable Battery Optimization"/>
+            <TextView
+                android:textSize="16sp"
+                android:id="@+id/txtBatteryOptPermissionDesc"
+                android:paddingBottom="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Battery Optimization settings need to be adjusted so that the app can work effectively in the background without being restricted by battery-saving features."/>
+            <CheckBox
+                android:id="@+id/chkBatteryOptPermission"
+                android:clickable="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Battery Optimization"/>
+            <Button
+                android:id="@+id/btnRequestBatteryOptPermission"
+                android:background="@drawable/background1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Disable Battery Optimization"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
