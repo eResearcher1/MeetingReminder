@@ -2,6 +2,9 @@
 package com.xtraword.apps.meetminder.legal;
 
 import android.content.Context;
+import com.xtraword.apps.meetminder.backup.BackupManager;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
@@ -60,6 +63,19 @@ public class SettingsActivity extends BaseActivity {
 
     private static final int BILLING_OK =
             BillingClient.BillingResponseCode.OK;
+
+    private final ExecutorService backupExecutor = Executors.newSingleThreadExecutor();
+    private Button buttonBackup;
+    private Button buttonRestore;
+
+    private final ActivityResultLauncher<String> backupLauncher = registerForActivityResult(
+            new ActivityResultContracts.CreateDocument("application/zip"), uri -> {
+                if (uri != null) runBackup(uri);
+            });
+    private final ActivityResultLauncher<String[]> restoreLauncher = registerForActivityResult(
+            new ActivityResultContracts.OpenDocument(), uri -> {
+                if (uri != null) confirmRestore(uri);
+            });
 
     private Button buttonPermissions;
     private Button buttonRing;
@@ -163,6 +179,14 @@ public class SettingsActivity extends BaseActivity {
         if (statusProgressBar != null) {
             statusProgressBar.setVisibility(View.GONE);
         }
+
+        buttonBackup = findViewById(R.id.buttonBackup);
+        buttonRestore = findViewById(R.id.buttonRestore);
+        buttonBackup.setOnClickListener(v -> backupLauncher.launch(
+                "MeetMinder_Backup_" + new java.text.SimpleDateFormat("yyyyMMdd_HHmm", java.util.Locale.US)
+                        .format(new java.util.Date()) + ".zip"));
+        buttonRestore.setOnClickListener(v -> restoreLauncher.launch(new String[]{
+                "application/zip", "application/octet-stream", "application/x-zip-compressed"}));
 
         setupRingtoneSettings();
         setupPermissionsButton();
@@ -1104,6 +1128,59 @@ public class SettingsActivity extends BaseActivity {
         }
     }
 
+    private void runBackup(Uri uri) {
+        buttonBackup.setEnabled(false);
+        backupExecutor.execute(() -> {
+            String message;
+            try {
+                BackupManager.exportTo(getApplicationContext(), uri);
+                message = "Backup saved successfully";
+            } catch (Exception e) {
+                Log.e(TAG, "Backup failed", e);
+                message = "Backup failed: " + e.getMessage();
+            }
+            final String result = message;
+            runOnUiThread(() -> {
+                if (buttonBackup != null) buttonBackup.setEnabled(true);
+                new androidx.appcompat.app.AlertDialog.Builder(this)
+                        .setMessage(result).setPositiveButton("OK", null).show();
+            });
+        });
+    }
+
+    private void confirmRestore(Uri uri) {
+        new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("Restore MeetMinder backup?")
+                .setMessage("This will replace existing meetings and alarms. "
+                        + "A safety backup will be saved inside the app first. "
+                        + "Your ad-removal purchase will not be changed.")
+                .setNegativeButton("Cancel", null)
+                .setPositiveButton("Restore", (dialog, which) -> runRestore(uri))
+                .show();
+    }
+
+    private void runRestore(Uri uri) {
+        buttonRestore.setEnabled(false);
+        backupExecutor.execute(() -> {
+            String message;
+            try {
+                int count = BackupManager.restoreFrom(getApplicationContext(), uri);
+                message = "Restored " + count + " meetings. Reminders have been rebuilt.";
+            } catch (Exception e) {
+                Log.e(TAG, "Restore failed", e);
+                message = "Restore failed: " + e.getMessage()
+                        + ". Your pre-restore safety backup is in app storage.";
+            }
+            final String result = message;
+            runOnUiThread(() -> {
+                if (buttonRestore != null) buttonRestore.setEnabled(true);
+                updateSelectedTone();
+                new androidx.appcompat.app.AlertDialog.Builder(this)
+                        .setMessage(result).setPositiveButton("OK", null).show();
+            });
+        });
+    }
+
     // --------------------------------------------------
     // ACTIVITY LIFECYCLE
     // --------------------------------------------------
@@ -1141,6 +1218,7 @@ public class SettingsActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
 
+        backupExecutor.shutdown();
         stopRingtonePreview();
 
         if (adView != null) {

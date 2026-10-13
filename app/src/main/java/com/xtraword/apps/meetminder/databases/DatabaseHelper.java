@@ -43,9 +43,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion + ". Old data will be destroyed.");
-        db.execSQL("DROP TABLE IF EXISTS meetings");
-        onCreate(db);
+        // Never drop user data during an app update.
+        db.execSQL("CREATE TABLE IF NOT EXISTS meetings (_id INTEGER PRIMARY KEY AUTOINCREMENT)");
+        java.util.Set<String> existing = new java.util.HashSet<>();
+        try (Cursor cursor = db.rawQuery("PRAGMA table_info(meetings)", null)) {
+            while (cursor.moveToNext()) existing.add(cursor.getString(1));
+        }
+        if (!existing.contains("title")) db.execSQL("ALTER TABLE meetings ADD COLUMN title TEXT");
+        if (!existing.contains("description")) db.execSQL("ALTER TABLE meetings ADD COLUMN description TEXT");
+        if (!existing.contains("date")) db.execSQL("ALTER TABLE meetings ADD COLUMN date TEXT");
+        if (!existing.contains("start_time")) db.execSQL("ALTER TABLE meetings ADD COLUMN start_time TEXT");
+        if (!existing.contains("end_time")) db.execSQL("ALTER TABLE meetings ADD COLUMN end_time TEXT");
+        if (!existing.contains("recurrence")) db.execSQL("ALTER TABLE meetings ADD COLUMN recurrence INTEGER DEFAULT 0");
+        if (!existing.contains("is_active")) db.execSQL("ALTER TABLE meetings ADD COLUMN is_active INTEGER DEFAULT 1");
     }
 
     public long addMeeting(String title, String description, String date, String startTime, String endTime, int recurrenceType, int isActive) {

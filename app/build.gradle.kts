@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "com.xtraword.apps.meetminder"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.xtraword.apps.meetminder"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 37
         versionCode = 4
         versionName = "1.2026.03.1"
 

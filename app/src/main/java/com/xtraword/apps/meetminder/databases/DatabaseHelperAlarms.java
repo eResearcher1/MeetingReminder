@@ -32,8 +32,18 @@ public class DatabaseHelperAlarms extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS alarms");
-        onCreate(db);
+        // Never drop user data during an app update.
+        db.execSQL("CREATE TABLE IF NOT EXISTS alarms (id INTEGER PRIMARY KEY AUTOINCREMENT)");
+        java.util.Set<String> existing = new java.util.HashSet<>();
+        try (Cursor cursor = db.rawQuery("PRAGMA table_info(alarms)", null)) {
+            while (cursor.moveToNext()) existing.add(cursor.getString(1));
+        }
+        if (!existing.contains("meeting_id")) db.execSQL("ALTER TABLE alarms ADD COLUMN meeting_id INTEGER");
+        if (!existing.contains("title")) db.execSQL("ALTER TABLE alarms ADD COLUMN title TEXT");
+        if (!existing.contains("description")) db.execSQL("ALTER TABLE alarms ADD COLUMN description TEXT");
+        if (!existing.contains("reminder_type")) db.execSQL("ALTER TABLE alarms ADD COLUMN reminder_type TEXT");
+        if (!existing.contains("meeting_time_millis")) db.execSQL("ALTER TABLE alarms ADD COLUMN meeting_time_millis INTEGER");
+        if (!existing.contains("reminder_time_millis")) db.execSQL("ALTER TABLE alarms ADD COLUMN reminder_time_millis INTEGER");
     }
 
     public long insertAlarm(int meetingId, String title, String description, String reminderType, long meetingTimeMillis, long reminderTimeMillis) {

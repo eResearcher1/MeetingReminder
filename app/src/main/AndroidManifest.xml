@@ -86,12 +86,12 @@
                     android:name="com.xtraword.apps.meetminder.ACTION_ALARM" />
             </intent-filter>
         </receiver>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Base.Theme.MeetMinder">
-            </activity>
+<!--        <activity-->
+<!--            android:name=".MainActivity"-->
+<!--            android:exported="true"-->
+<!--            android:label="@string/app_name"-->
+<!--            android:theme="@style/Base.Theme.MeetMinder">-->
+<!--            </activity>-->
         <service
             android:name=".foreground.ReminderService"
             android:exported="false" />
@@ -103,8 +103,9 @@
             android:name=".alarms.DailySummaryReceiver"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".MainActivity"
             android:exported="true"
+            android:label="@string/app_name"
             android:theme="@style/Base.Theme.MeetMinder">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
